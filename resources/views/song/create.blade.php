@@ -4,6 +4,16 @@
 <div class="container">
 
 	<h1>Add a new song</h1>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 	
 	<nav class="navbar navbar-inverse">
 	    <ul class="nav navbar-nav">
@@ -41,8 +51,8 @@
         <div class="form-group row mb-0">
             <div class="col-md-8 offset-md-4">
                 <button type="submit" class="btn btn-primary">
-                    {{ __('Submit') }}
-                </button>                               
+                    {{ __('Submit') }} <i class="fab fa-accessible-icon"></i>
+                </button>                             
             </div>
         </div>
 	</form>

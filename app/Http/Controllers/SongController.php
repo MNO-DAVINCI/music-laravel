@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Song;
 
@@ -37,7 +38,29 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        return dd($request);
+        $rules = array(
+            'artist' => 'required',
+            'title' => 'required',
+            'url' => 'required',
+        );
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return redirect('songs/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        } else {
+            $song = new Song();
+
+            $song->artist = $request->input('artist');
+            $song->title = $request->input('title');
+            $song->url = $request->input('url');
+
+            $song->save();
+        }
+
+        return redirect('songs');
     }
 
     /**

@@ -27,7 +27,11 @@
 			<th scope="row">{{ $song->id }}</th>
 			<td>{{ $song->artist }}</td>
 			<td>{{ $song->title }}</td>
-			<td><a href="{{ $song->url }}">{{ $song->url }}</a></td>
+			<td style="position:relative;">
+				<a href="{{ $song->url }}">{{ $song->url }}</a>
+				<span style="position: absolute; right: 60px;"><a href="{{ URL::to('songs/' . $song->id . '/edit') }}" style="color:#3490DC"><i class="fas fa-pencil-alt"></i></a></span>
+				<span style="position: absolute; right: 30px;"><a href="{{ URL::to('songs/delete/' . $song->id) }}" style="color:#E3342F"><i class="fas fa-trash-alt"></i></a></span>
+			</td>
 		</tr>
 		@endforeach
 		</tbody>
