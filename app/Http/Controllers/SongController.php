@@ -26,8 +26,7 @@ class SongController extends Controller
      */
     public function create()
     {
-        //
-        return 'dit is create';
+        return view('song.create');
     }
 
     /**
@@ -38,8 +37,7 @@ class SongController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return 'dit is store';
+        return dd($request);
     }
 
     /**

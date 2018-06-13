@@ -11,11 +11,10 @@
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
+Route::get('/', 'SongController@index');
 
 Route::resource('songs', 'SongController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
